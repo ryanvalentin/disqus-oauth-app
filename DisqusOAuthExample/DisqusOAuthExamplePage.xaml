@@ -6,11 +6,12 @@
 	x:Class="DisqusOAuthExample.DisqusOAuthExamplePage"
 	>
 	<Grid VerticalOptions="Center" HorizontalOptions="Center">
-		<Button x:Name="LogInButton" Clicked="Handle_Clicked" Text="Log in with Disqus" IsVisible="{Binding ShowLogin}" />
+		<Button x:Name="LogInButton" Clicked="Login_Clicked" Text="Log in with Disqus" IsVisible="{Binding ShowLogin}" />
 		<ActivityIndicator x:Name="LoadingIndicator" IsRunning="{Binding IsLoading}" Color="Gray" IsVisible="{Binding IsLoading}" />
 		<StackLayout x:Name="AuthUserLayout" IsVisible="{Binding IsAuthenticated}">
-			<Label x:Name="NameTextLabel" FontSize="18" Text="{Binding Name}" />
-			<Label x:Name="UsernameTextLabel" FontSize="14" Text="{Binding Username}" />
+			<Label x:Name="NameTextLabel" FontSize="18" Text="{Binding Name}" HorizontalOptions="Center" />
+			<Label x:Name="UsernameTextLabel" FontSize="14" Text="{Binding Username}" HorizontalOptions="Center" />
+			<Button x:Name="LogOutButton" Clicked="Logout_Clicked" Text="Log out" HorizontalOptions="Center" />
 		</StackLayout>
 	</Grid>
 

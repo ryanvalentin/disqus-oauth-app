@@ -78,6 +78,11 @@ namespace DisqusOAuthExample
 			}
 		}
 
+		public void Login()
+		{
+			App.DsqClient.StartAuthorizeUser();
+		}
+
 		public async Task FetchUserAsync()
 		{
 			if (!IsAuthenticated)
@@ -95,6 +100,14 @@ namespace DisqusOAuthExample
 				// TODO: Handle error
 				System.Diagnostics.Debug.WriteLine(ex.Message);
 			}
+		}
+
+		public void Logout()
+		{
+			App.DsqClient.Logout();
+			IsAuthenticated = false;
+			Name = "";
+			Username = "";
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;

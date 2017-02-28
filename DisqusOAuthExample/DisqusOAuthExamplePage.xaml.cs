@@ -6,7 +6,7 @@ namespace DisqusOAuthExample
 {
 	public partial class DisqusOAuthExamplePage : ContentPage
 	{
-		DisqusOAuthExampleViewModel ViewModel => (DisqusOAuthExampleViewModel)BindingContext;
+		public DisqusOAuthExampleViewModel ViewModel => (DisqusOAuthExampleViewModel)BindingContext;
 
 		public DisqusOAuthExamplePage()
 		{
@@ -20,9 +20,14 @@ namespace DisqusOAuthExample
 			base.OnAppearing();
 		}
 
-		void Handle_Clicked(object sender, System.EventArgs e)
+		private void Login_Clicked(object sender, System.EventArgs e)
 		{
-			App.DsqClient.StartAuthorizeUser();
+			ViewModel.Login();
+		}
+
+		private void Logout_Clicked(object sender, System.EventArgs e)
+		{
+			ViewModel.Logout();
 		}
 	}
 }

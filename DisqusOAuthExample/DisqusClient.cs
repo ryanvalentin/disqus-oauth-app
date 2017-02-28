@@ -95,6 +95,9 @@ namespace DisqusOAuthExample
 				{
 					try
 					{
+						CrossSettings.Current.Remove("DisqusAuthState");
+						_activationUrl = null;
+
 						CrossSettings.Current.AddOrUpdateValue("DisqusAuthorization", payloadString);
 						_authorization = JsonConvert.DeserializeObject<OAuthResponse>(payloadString);
 					}
@@ -125,6 +128,12 @@ namespace DisqusOAuthExample
 			// TODO: Set up a function endpoint that takes a refresh token, and refreshes the authorization using
 			// a stored secret key. It should return the refreshed authentication. If authorization fails, be sure to
 			// delete the authentication so the application doesn't think the user is logged in.
+		}
+
+		public void Logout()
+		{
+			CrossSettings.Current.Remove("DisqusAuthorization");
+			_authorization = null;
 		}
 
 		public async Task<User> GetAuthenticatedUserDetailsAsync()
