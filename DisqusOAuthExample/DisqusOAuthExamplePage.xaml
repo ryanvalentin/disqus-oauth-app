@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:DisqusOAuthExample" 
+	x:Class="DisqusOAuthExample.DisqusOAuthExamplePage"
+	>
+	<Grid VerticalOptions="Center" HorizontalOptions="Center">
+		<Button x:Name="LogInButton" Clicked="Handle_Clicked" Text="Log in with Disqus" IsVisible="{Binding ShowLogin}" />
+		<ActivityIndicator x:Name="LoadingIndicator" IsRunning="{Binding IsLoading}" Color="Gray" IsVisible="{Binding IsLoading}" />
+		<StackLayout x:Name="AuthUserLayout" IsVisible="{Binding IsAuthenticated}">
+			<Label x:Name="NameTextLabel" FontSize="18" Text="{Binding Name}" />
+			<Label x:Name="UsernameTextLabel" FontSize="14" Text="{Binding Username}" />
+		</StackLayout>
+	</Grid>
+
+</ContentPage>
