@@ -59,18 +59,15 @@ namespace DisqusOAuthExample
 
 		private async Task CheckDisqusUserStatusAsync()
 		{
-			Device.BeginInvokeOnMainThread(async () =>
+			ViewModel.IsLoading = true;
+
+			ViewModel.IsAuthenticated = await App.DsqClient.CheckAuthorizationAsync();
+			if (ViewModel.IsAuthenticated)
 			{
-				ViewModel.IsLoading = true;
+				await ViewModel.FetchUserAsync();
+			}
 
-				ViewModel.IsAuthenticated = await App.DsqClient.CheckAuthorizationAsync();
-				if (ViewModel.IsAuthenticated)
-				{
-					await ViewModel.FetchUserAsync();
-				}
-
-				ViewModel.IsLoading = false;
-			});
+			ViewModel.IsLoading = false;
 		}
 	}
 }

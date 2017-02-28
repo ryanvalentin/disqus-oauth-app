@@ -15,7 +15,7 @@ namespace DisqusOAuthExample
 			BindingContext = App.ViewModel;
 		}
 
-		protected override async void OnAppearing()
+		protected override void OnAppearing()
 		{
 			base.OnAppearing();
 		}
