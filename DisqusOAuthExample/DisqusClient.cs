@@ -14,6 +14,7 @@ namespace DisqusOAuthExample
 	{
 		private const string _oauthBaseUrl = "https://disqus.com/api/oauth/2.0/authorize/";
 		private const string _apiBaseUrl = "https://disqus.com/api/3.0/";
+		private const string _loginBaseUrl = "https://disqus.com/profile/login/";
 
 		private readonly HttpClient _client;
 
@@ -55,9 +56,13 @@ namespace DisqusOAuthExample
 			string state = Guid.NewGuid().ToString("N");
 			CrossSettings.Current.AddOrUpdateValue("DisqusAuthState", state);
 
-			Uri authorizeUri = new Uri($"{_oauthBaseUrl}?client_id={_apiKey}&scope=read,write,email&response_type=code&state={state}");
+			string oauthUrl = $"{_oauthBaseUrl}?client_id={_apiKey}&scope=read,write,email&response_type=code&state={state}";
 
-			Device.OpenUri(authorizeUri);
+			// Route OAuth URLs through the Disqus login page first, because it allows users to log in with Twitter,
+			// Facebook, etc., while the OAuth dialog doesn't.
+			Uri fullUri = new Uri($"{_loginBaseUrl}?next={Uri.EscapeDataString(oauthUrl)}");
+
+			Device.OpenUri(fullUri);
 		}
 
 		public void QueueAuthorizationUrl(string activationUrlString)
