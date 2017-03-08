@@ -21,5 +21,17 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)DisqusClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DisqusOAuthExampleViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Disqus\Models\DsqApiResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Disqus\Models\DsqOAuthResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Disqus\Models\DsqUser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Disqus\DisqusService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Disqus\DisqusAuthentication.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Disqus\Helpers\DisqusSSO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Services\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Services\Disqus\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Services\Disqus\Models\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Services\Disqus\Helpers\" />
   </ItemGroup>
 </Project>
